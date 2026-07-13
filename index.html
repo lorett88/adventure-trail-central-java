@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <meta name="google-site-verification" content="yl8i8B72LuYAnUg7rpUy08IijFrZ3bYTp8gsN0_Wvgc" />
 <title>Central Java Adventure Trails — Hikes, Caves & Sunrise Walks | By a Local</title>
 <meta name="description" content="9+ adventure trails in Central Java, Indonesia — Dieng sunrise hikes, Mount Slamet, river caves in Kebumen, hidden waterfalls. With prices, time plans and exactly how to get there from Jakarta, Bandung or Yogyakarta.">
 <meta name="keywords" content="Central Java hiking, Dieng sunrise trek, Sikunir, Mount Prau, Gua Barat cave, Curug Nangga, Baturraden trail, Java adventure travel">
@@ -159,6 +158,13 @@ h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,3.6vw,34px);l
 .gmaps-link{display:inline-block;margin-top:16px;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--forest);text-decoration:none;border:1.5px solid var(--forest);border-radius:99px;padding:8px 16px}
 .gmaps-link:hover{background:var(--forest);color:#fff}
 
+/* ---------- safety ---------- */
+.safety-note{background:#FFF8EC;border:1.5px solid #E8D5AC;border-left:5px solid var(--gold);border-radius:14px;padding:20px 22px}
+.safety-note h3{font-family:var(--display);font-weight:600;font-size:17px;margin-bottom:8px;color:#7A5A14}
+.safety-note p{font-size:14px;color:#5C4A22}
+.safety-row{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px}
+.s-item{font-size:13px;background:#fff;border:1px solid #E8D5AC;border-radius:99px;padding:6px 13px;color:#5C4A22}
+
 /* ---------- FAQ ---------- */
 .faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:10px;overflow:hidden}
 .faq-item summary{padding:16px 20px;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:15.5px}
@@ -216,6 +222,17 @@ footer .fine{font-size:12px;color:#7E9486;margin-top:18px}
 
 <main>
   <div class="wrap">
+    <section id="safety" style="padding-top:28px">
+      <div class="safety-note">
+        <h3>Read this first</h3>
+        <p>This site exists to make your trip easier to plan — it is <strong>not a safety guarantee</strong>. Mountains close, rivers rise, trails wash out, and prices change faster than any website. Conditions on the ground always beat information on a screen: <strong>check locally before every remote trail, follow your guide's judgement, and know your own limits.</strong> Where we say a guide is <em>required</em>, that is safety and local regulation — not a suggestion.</p>
+        <div class="safety-row">
+          <span class="s-item">🚨 Emergency (national): <strong>112</strong></span>
+          <span class="s-item">🛟 Search &amp; Rescue (Basarnas): <strong>115</strong></span>
+          <span class="s-item">🏥 Travel insurance with evacuation cover: <strong>strongly advised</strong></span>
+        </div>
+      </div>
+    </section>
     <div id="trail-sections"></div>
   </div>
 
@@ -264,7 +281,7 @@ footer .fine{font-size:12px;color:#7E9486;margin-top:18px}
     <h2>Why trust this guide?</h2>
     <p>I was born on the slopes of these mountains — I run businesses in Banyumas, and these trails are my weekends. The hot spring at the end of the Ketenger walk is twenty minutes from my house. No blogger passing through for three days knows which warung opens at dawn or which cave guide to trust; I do.</p>
     <p>Planning the rest of the trip? See what everything should cost in the <a href="https://lorett88.github.io/centraljava-fairprice/">Central Java Fair Price Guide</a> — and if Bali is on your route, the <a href="https://lorett88.github.io/bali-fairprice/">Bali Fair Price Guide</a> will save you from the tourist prices there too.</p>
-    <div class="fine">Trail data last reviewed July 2026 · Conditions change — always check locally before remote trails · Supported by ads · Not affiliated with any operator</div>
+    <div class="fine">Trail data last reviewed July 2026 and provided in good faith as a planning aid only — it is not professional advice and carries no warranty. Outdoor activities involve inherent risk; you are responsible for your own safety, for checking current local conditions, and for complying with local rules and guide requirements. Supported by ads · Not affiliated with any operator.</div>
   </div>
 </footer>
 
@@ -368,7 +385,7 @@ function render(){
               </div>
             </div>
           </div>
-          ${t.warnings?`<div class="warnbox"><strong>Know before you go:</strong> ${esc(t.warnings)}</div>`:""}
+          ${t.guide==="required"?`<div class="warnbox"><strong>⚠ Hazardous location — official local guide is mandatory.</strong> Going without one is dangerous and against local rules. ${esc(t.warnings)}</div>`:(t.warnings?`<div class="warnbox"><strong>Know before you go:</strong> ${esc(t.warnings)}</div>`:"")}
           <a class="gmaps-link" href="https://www.google.com/maps/search/${encodeURIComponent(t.gmaps||t.name)}" target="_blank" rel="noopener">Open in Google Maps ↗</a>
         </div>
       </article>`;
